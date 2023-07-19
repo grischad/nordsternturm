@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import * as MENUS from '../constants/menus';
 import { BlogInfoFragment } from '../fragments/GeneralSettings';
+import TranslationSwitch from '../components/TranslationSwitch/TranslationSwitch';
 import {
   Header,
   Footer,
@@ -23,7 +24,7 @@ export default function Component(props) {
     props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, content, featuredImage, date, author } = props.data.post;
+  const { title, content, featuredImage, date, author, language, translations } = props.data.post;
 
   return (
     <>
@@ -46,6 +47,7 @@ export default function Component(props) {
             author={author?.node?.name}
           />
           <Container>
+            <TranslationSwitch translations={translations} />
             <ContentWrapper content={content} />
           </Container>
         </>
@@ -75,6 +77,12 @@ Component.query = gql`
         }
       }
       ...FeaturedImageFragment
+      translations {
+          slug
+          language {
+            code
+          }
+        }
     }
     generalSettings {
       ...BlogInfoFragment
