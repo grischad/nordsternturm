@@ -13,8 +13,12 @@ import {
   FeaturedImage,
   SEO,
 } from '../components';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Component(props) {
+
+  const [shouldRenderContent, setShouldRenderContent] = useState(false);
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
@@ -25,6 +29,29 @@ export default function Component(props) {
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author, language, translations } = props.data.post;
+  const router = useRouter();
+
+  useEffect(() => {
+    const preferredLanguage = localStorage.getItem('language');
+
+
+    if (preferredLanguage && router.locale !== preferredLanguage) {
+
+
+      const nextLang = translations.find(t => t.language.code.toLowerCase() === preferredLanguage);
+
+      router.push(`/${nextLang.slug}`, undefined, { locale: nextLang.language.code.toLowerCase() });
+
+
+    } else {
+      setShouldRenderContent(true);
+    }
+  }, []);
+
+  if (!shouldRenderContent) {
+    return null;
+  }
+
 
   return (
     <>
@@ -40,6 +67,7 @@ export default function Component(props) {
       />
       <Main>
         <>
+          <TranslationSwitch translations={translations} />
           <EntryHeader
             title={title}
             image={featuredImage?.node}
@@ -47,7 +75,7 @@ export default function Component(props) {
             author={author?.node?.name}
           />
           <Container>
-            <TranslationSwitch translations={translations} />
+
             <ContentWrapper content={content} />
           </Container>
         </>

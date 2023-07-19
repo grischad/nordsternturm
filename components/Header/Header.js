@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useRouter } from "next/router";
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { Container, NavigationMenu, SkipNavigationLink } from '../../components';
@@ -13,25 +12,10 @@ export default function Header({
   menuItems
 }) {
   const [isNavShown, setIsNavShown] = useState(false);
-  const { locale: activeLocale, locales, asPath } = useRouter();
-
-  const availableLocales = locales.filter((locale) => locale !== activeLocale);
-
 
   return (
     <header className={cx('component')}>
       <SkipNavigationLink />
-      <ul>
-        {availableLocales.map((locale) => {
-          return (
-            <li key={locale}>
-              <Link href={asPath} locale={locale}>
-                <a className={styles.toggle}>{locale.toUpperCase()}</a>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
       <Container>
         <div className={cx('navbar')}>
           <div className={cx('brand')}>
