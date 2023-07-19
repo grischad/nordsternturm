@@ -6,7 +6,7 @@ export default function Preview(props) {
   const router = useRouter();
   const params = router.query;
   console.log("🚀 ~ file: preview.js:7 ~ Preview ~ params:", params)
-  // Loggen Sie die Props beim ersten Rendern
+  // Loggen Sie die Props beim ersten Rendern jo
   console.log('Initial props', props);
 
   // Verwenden Sie useEffect, um die Props zu loggen, wenn sie sich ändern
