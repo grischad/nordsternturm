@@ -15,6 +15,7 @@ import {
 } from '../components';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { QrScanner } from '@yudiel/react-qr-scanner';
 
 export default function Component(props) {
 
@@ -68,6 +69,11 @@ export default function Component(props) {
       <Main>
         <>
           <TranslationSwitch translations={translations} />
+          <h1>Scan a QR code</h1>
+          <QrScanner
+            onDecode={(result) => console.log(result)}
+            onError={(error) => console.log(error?.message)}
+          />
           <EntryHeader
             title={title}
             image={featuredImage?.node}
