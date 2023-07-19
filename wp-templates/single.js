@@ -71,8 +71,8 @@ export default function Component(props) {
           <TranslationSwitch translations={translations} />
           <h1>Scan a QR code</h1>
           <QrScanner
-            onDecode={(result) => console.log(result)}
-            onError={(error) => console.log(error?.message)}
+            onDecode={(result) => alert(result)}
+            onError={(error) => alert(error?.message)}
           />
           <EntryHeader
             title={title}
