@@ -16,10 +16,12 @@ import {
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { QrScanner } from '@yudiel/react-qr-scanner';
+import QrToggle from '../components/QrToggle/QrToggle';
 
 export default function Component(props) {
 
   const [shouldRenderContent, setShouldRenderContent] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
@@ -68,12 +70,14 @@ export default function Component(props) {
       />
       <Main>
         <>
-          <TranslationSwitch translations={translations} />
-          <h1>Scan a QR code</h1>
-          <QrScanner
-            onDecode={(result) => alert(result)}
-            onError={(error) => alert(error?.message)}
-          />
+          <dic className="flex justify-between">
+            <TranslationSwitch translations={translations} />
+            <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
+          </dic>
+          {showScanner && <QrScanner
+            onDecode={(result) => router.push(result)}
+            onError={(error) => console.log(error?.message)}
+          />}
           <EntryHeader
             title={title}
             image={featuredImage?.node}
