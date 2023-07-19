@@ -23,6 +23,8 @@ export default function TranslationSwitch({ translations }) {
         setCurrentLanguage(router.locale);
     }, [router.locale]);
 
+    if (translations.length === 0) return <div />
+
     return (
         <div className="flex items-center space-x-2">
             <label

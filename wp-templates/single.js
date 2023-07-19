@@ -32,6 +32,7 @@ export default function Component(props) {
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author, language, translations } = props.data.post;
+  console.log("🚀 ~ file: single.js:35 ~ Component ~ translations:", translations)
   const router = useRouter();
 
   useEffect(() => {
