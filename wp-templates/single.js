@@ -80,7 +80,7 @@ export default function Component(props) {
             <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
           </dic>
           {showScanner && <QrScanner
-            onDecode={(result) => router.push(result)}
+            onDecode={(result) => { setShowScanner(false); router.push(result) }}
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}
           />}
           <EntryHeader
