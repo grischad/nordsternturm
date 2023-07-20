@@ -35,8 +35,8 @@ export default function Component(props) {
 
       const nextLang = translations.find(t => t.language.code.toLowerCase() === preferredLanguage);
 
-      router.push(nextLang.uri, undefined, { locale: nextLang.language.code.toLowerCase() });
-
+      if (nextLang) { router.push(nextLang.uri) }
+      else { setShouldRenderContent(true); }
 
     } else {
       setShouldRenderContent(true);
@@ -81,7 +81,7 @@ export default function Component(props) {
             <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
           </div>
           {showScanner && <QrScanner
-            onDecode={(result) => { setShowScanner(false); router.push(result) }}
+            onDecode={(result) => { setShowScanner(false); window.location.href = result }}
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}
           />}
           <EntryHeader
