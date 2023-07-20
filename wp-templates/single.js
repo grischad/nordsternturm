@@ -41,7 +41,7 @@ export default function Component(props) {
     } else {
       setShouldRenderContent(true);
     }
-  }, []);
+  }, [currentLanguage]);
 
   if (props.loading) {
     return <>Loading...</>;
