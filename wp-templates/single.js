@@ -35,7 +35,8 @@ export default function Component(props) {
 
       const nextLang = translations.find(t => t.language.code.toLowerCase() === preferredLanguage);
 
-      if (nextLang) { router.push(nextLang.uri) }
+
+      if (nextLang) { router.push(nextLang.slug, undefined, { locale: preferredLanguage }) }
       else { setShouldRenderContent(true); }
 
     } else {

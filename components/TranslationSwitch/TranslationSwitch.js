@@ -15,7 +15,8 @@ export default function TranslationSwitch({ translations, currentLanguage, setCu
         if (nextLang) {
             setCurrentLanguage(nextLang.language.code.toLowerCase());
             localStorage.setItem('language', nextLang.language.code.toLowerCase());
-            router.push(nextLang.uri, undefined, { locale: nextLang.language.code.toLowerCase() });
+            router.push(nextLang.slug, undefined, { locale: nextLang.language.code.toLowerCase() });
+
         }
     }
 
