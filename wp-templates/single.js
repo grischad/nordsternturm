@@ -35,7 +35,7 @@ export default function Component(props) {
 
       const nextLang = translations.find(t => t.language.code.toLowerCase() === preferredLanguage);
 
-      router.push(`/${nextLang.uri}`, undefined, { locale: nextLang.language.code.toLowerCase() });
+      router.push(nextLang.uri, undefined, { locale: nextLang.language.code.toLowerCase() });
 
 
     } else {
