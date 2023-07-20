@@ -81,7 +81,7 @@ export default function Component(props) {
           </dic>
           {showScanner && <QrScanner
             onDecode={(result) => router.push(result)}
-            onError={(error) => console.log(error?.message)}
+            onError={(error) => { setShowScanner(false); console.log(error?.message) }}
           />}
           <EntryHeader
             title={title}
