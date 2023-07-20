@@ -41,7 +41,7 @@ export default function Component(props) {
     } else {
       setShouldRenderContent(true);
     }
-  }, [currentLanguage]);
+  }, [router.route]);
 
   if (props.loading) {
     return <>Loading...</>;
@@ -52,7 +52,7 @@ export default function Component(props) {
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author, language, translations } = props.data.post;
-  console.log("🚀 ~ file: single.js:35 ~ Component ~ translations:", translations)
+
 
 
 
@@ -76,10 +76,10 @@ export default function Component(props) {
       />
       <Main>
         <>
-          <dic className="flex justify-between">
+          <div className="flex justify-between">
             <TranslationSwitch translations={translations} currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />
             <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
-          </dic>
+          </div>
           {showScanner && <QrScanner
             onDecode={(result) => { setShowScanner(false); router.push(result) }}
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}
