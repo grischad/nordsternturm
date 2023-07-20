@@ -15,15 +15,14 @@ export default function FeaturedImage({
   width = width ? width : image?.mediaDetails?.width;
   height = height ? height : image?.mediaDetails?.height;
   layout = layout ?? 'fill';
+  let imageProps = layout === 'fill' ? { layout } : { layout, width, height };
 
   return src && width && height ? (
     <figure className={className}>
       <Image
         src={src}
         alt={altText}
-        layout={layout}
-        width={width}
-        height={height}
+        {...imageProps}
         priority={priority}
         {...props}
       />

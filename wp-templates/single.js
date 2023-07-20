@@ -17,8 +17,14 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { QrScanner } from '@yudiel/react-qr-scanner';
 import QrToggle from '../components/QrToggle/QrToggle';
+import { WordPressBlocksViewer } from '@faustwp/blocks';
+import blocks from "../wp-blocks";
+import flatListToHierarchical from "../utils/flatListToHierarchical";
+import getFragmentDataFromBlocks from "../utils/getFragmentDataFromBlocks";
 
 export default function Component(props) {
+
+
 
   const [shouldRenderContent, setShouldRenderContent] = useState(false);
   const [showScanner, setShowScanner] = useState(false);
@@ -31,8 +37,9 @@ export default function Component(props) {
     props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, content, featuredImage, date, author, language, translations } = props.data.post;
+  const { title, content, featuredImage, date, author, language, translations, editorBlocks } = props.data.post;
   console.log("🚀 ~ file: single.js:35 ~ Component ~ translations:", translations)
+  const blocks = flatListToHierarchical(editorBlocks);
   const router = useRouter();
 
   useEffect(() => {
@@ -86,8 +93,11 @@ export default function Component(props) {
             author={author?.node?.name}
           />
           <Container>
-
+            <h2>ContentWrapper:</h2>
             <ContentWrapper content={content} />
+            <hr className="my-8" />
+            <h2>WordPressBlocksViewer</h2>
+            <WordPressBlocksViewer blocks={blocks} />
           </Container>
         </>
       </Main>
@@ -100,6 +110,7 @@ Component.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
   ${FeaturedImage.fragments.entry}
+  ${getFragmentDataFromBlocks(blocks).entries}
   query GetPost(
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
@@ -115,6 +126,17 @@ Component.query = gql`
           name
         }
       }
+      editorBlocks {
+          cssClassNames
+          isDynamic
+          name
+          id: clientId
+          parentId: parentClientId
+          renderedHtml
+
+          # Get all block fragment keys and call them in the query
+          ${getFragmentDataFromBlocks(blocks).keys}
+        }
       ...FeaturedImageFragment
       translations {
           slug
