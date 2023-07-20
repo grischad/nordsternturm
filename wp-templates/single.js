@@ -23,16 +23,6 @@ export default function Component(props) {
   const [shouldRenderContent, setShouldRenderContent] = useState(false);
   const [showScanner, setShowScanner] = useState(false);
   // Loading state for previews
-  if (props.loading) {
-    return <>Loading...</>;
-  }
-
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
-  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, content, featuredImage, date, author, language, translations } = props.data.post;
-  console.log("🚀 ~ file: single.js:35 ~ Component ~ translations:", translations)
   const router = useRouter();
 
   useEffect(() => {
@@ -51,6 +41,20 @@ export default function Component(props) {
       setShouldRenderContent(true);
     }
   }, []);
+
+  if (props.loading) {
+    return <>Loading...</>;
+  }
+
+  const { title: siteTitle, description: siteDescription } =
+    props?.data?.generalSettings;
+  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
+  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
+  const { title, content, featuredImage, date, author, language, translations } = props.data.post;
+  console.log("🚀 ~ file: single.js:35 ~ Component ~ translations:", translations)
+
+
+
 
   if (!shouldRenderContent) {
     return null;
