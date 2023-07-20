@@ -24,6 +24,7 @@ export default function Component(props) {
   const [showScanner, setShowScanner] = useState(false);
   // Loading state for previews
   const router = useRouter();
+  const [currentLanguage, setCurrentLanguage] = useState(router.locale);
 
   useEffect(() => {
     const preferredLanguage = localStorage.getItem('language');
@@ -76,7 +77,7 @@ export default function Component(props) {
       <Main>
         <>
           <dic className="flex justify-between">
-            <TranslationSwitch translations={translations} />
+            <TranslationSwitch translations={translations} currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />
             <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
           </dic>
           {showScanner && <QrScanner

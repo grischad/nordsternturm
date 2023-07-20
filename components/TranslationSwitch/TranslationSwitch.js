@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export default function TranslationSwitch({ translations }) {
+export default function TranslationSwitch({ translations, currentLanguage, setCurrentLanguage }) {
     const router = useRouter();
-    const [currentLanguage, setCurrentLanguage] = useState(router.locale);
+
 
     // useEffect(() => {
     //     localStorage.setItem('language', currentLanguage);
