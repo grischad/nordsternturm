@@ -25,12 +25,13 @@ export default function Component(props) {
   // Loading state for previews
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = useState(router.locale);
+  const isPreviewRoute = router.route.includes('preview');
+
 
   useEffect(() => {
     const preferredLanguage = localStorage.getItem('language');
 
-
-    if (preferredLanguage && router.locale !== preferredLanguage) {
+    if (preferredLanguage && router.locale !== preferredLanguage && !isPreviewRoute) {
 
 
       const nextLang = translations.find(t => t.language.code.toLowerCase() === preferredLanguage);
@@ -48,6 +49,8 @@ export default function Component(props) {
     return <>Loading...</>;
   }
 
+
+
   const { title: siteTitle, description: siteDescription } =
     props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
@@ -58,7 +61,7 @@ export default function Component(props) {
 
 
 
-  if (!shouldRenderContent) {
+  if (!shouldRenderContent && !isPreviewRoute) {
     return null;
   }
 
