@@ -1,3 +1,3 @@
 # faust-getting-started
 
-Welcome to the experimental Faust getting started example.
+https://www.nordsternturm-tour.de
