@@ -5,15 +5,18 @@ import { FaustProvider } from '@faustwp/core';
 import '@faustwp/core/dist/css/toolbar.css';
 import '../styles/global.scss';
 import '../globalStylesheet.css';
+import { Josefin_Sans } from 'next/font/google'
+
+const josefinSans = Josefin_Sans({ subsets: ['latin'] })
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   return (
     <FaustProvider pageProps={pageProps}>
-
-      <Component {...pageProps} key={router.asPath} />
-
+      <main className={josefinSans.className}>
+        <Component {...pageProps} key={router.asPath} />
+      </main>
     </FaustProvider>
   );
 }

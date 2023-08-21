@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { QrScanner } from '@yudiel/react-qr-scanner';
 import QrToggle from '../components/QrToggle/QrToggle';
+import Image from 'next/image';
 
 export default function Component(props) {
 
@@ -73,13 +74,24 @@ export default function Component(props) {
         description={siteDescription}
         imageUrl={featuredImage?.node?.sourceUrl}
       />
-      <Header
+      {/* <Header
         title={siteTitle}
         description={siteDescription}
         menuItems={primaryMenu}
-      />
+      /> */}
+      <div className="sticky w-full top-0 h-2 bg-right z-20">
+        <Image
+          src="/header_top_color.png"
+          alt="Header Top Color"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="right"
+        // quality={100}
+        />
+      </div>
       <Main>
         <>
+
           <div className="flex justify-between">
             <TranslationSwitch translations={translations} currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />
             <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
