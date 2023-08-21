@@ -10,6 +10,7 @@ import {
   Hero,
   SEO,
 } from '../components';
+import Image from 'next/image'
 
 export default function Component() {
   const { data } = useQuery(Component.query, {
@@ -24,17 +25,25 @@ export default function Component() {
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
-      <Header
+      {/* <Header
         title={siteTitle}
         description={siteDescription}
         menuItems={primaryMenu}
-      />
+      /> */}
       <Main>
         <Container>
-          <Hero title={'Front Page'} />
+          <Hero title={siteTitle} />
           <div className="text-center">
-            <p>This page is utilizing the "front-page" WordPress template.</p>
-            <code>wp-templates/front-page.js</code>
+            <p>{siteDescription}</p>
+            <p>Seite im Aufbau</p>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Image
+                src="/logo.png" // Pfad zu Ihrem Logo
+                alt="Beschreibung des Bildes"
+                width={174} // gewünschte Breite
+                height={103} // gewünschte Höhe
+              />
+            </div>
           </div>
         </Container>
       </Main>
