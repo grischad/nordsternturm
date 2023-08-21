@@ -36,7 +36,7 @@ export default function Component() {
           <div className="text-center">
             <p>{siteDescription}</p>
             <p>Seite im Aufbau</p>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className="flex justify-center mb-40">
               <Image
                 src="/logo.png" // Pfad zu Ihrem Logo
                 alt="Beschreibung des Bildes"

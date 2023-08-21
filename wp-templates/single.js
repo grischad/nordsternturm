@@ -79,16 +79,7 @@ export default function Component(props) {
         description={siteDescription}
         menuItems={primaryMenu}
       /> */}
-      <div className="sticky w-full top-0 h-2 bg-right z-20">
-        <Image
-          src="/header_top_color.png"
-          alt="Header Top Color"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="right"
-        // quality={100}
-        />
-      </div>
+
       <Main>
         <>
 

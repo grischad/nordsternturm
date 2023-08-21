@@ -9,7 +9,7 @@ export default function Footer({ title, menuItems }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className={cx('component') + " bg-[#2A2D30] text-[#D3D3D3] py-4"}>
+    <footer className={cx('component') + " bg-[#2A2D30] text-[#D3D3D3] py-4 sticky top-full"}>
       <Container>
         <Image
           src="/footer-preview.png"
