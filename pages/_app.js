@@ -44,7 +44,7 @@ export default function MyApp({ Component, pageProps }) {
       }
     }
     setKlaroConsents();
-  }, [klaroManager])
+  }, [])
 
   return (
     <FaustProvider pageProps={pageProps}>

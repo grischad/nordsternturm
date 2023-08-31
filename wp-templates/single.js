@@ -131,7 +131,13 @@ export default function Component(props) {
             <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
           </div>
           {showScanner && <QrScanner
-            onDecode={(result) => { setShowScanner(false); router.push(result); }}
+            onDecode={(result) => {
+              setShowScanner(false);
+              // const newResult = result.replace('https://www.nordsternturm-tour.de', 'http://192.168.178.145:3000'); 
+              // console.log("🚀 ~ file: single.js:135 ~ Component ~ newResult:", newResult); 
+              window.location.href = result
+            }}
+
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}
           />}
           <EntryHeader
