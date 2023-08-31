@@ -67,6 +67,10 @@ export default function Component(props) {
   const cheerio = require('cheerio');
 
   const modifyContent = (htmlString) => {
+    if (typeof htmlString !== 'string') {
+      console.error('htmlString is not a string:', htmlString);
+      return '';
+    }
     const platforms = ['youtube', 'vimeo', 'facebook', 'soundcloud', 'mixcloud'];
     const $ = cheerio.load(htmlString);
 
