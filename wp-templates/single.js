@@ -28,9 +28,7 @@ export default function Component(props) {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = useState(router.locale);
   const isPreviewRoute = router.route.includes('preview');
-  const { consents, openModal } = useConsentContext();
-  console.log("🚀 ~ file: single.js:32 ~ Component ~ consents:", consents)
-
+  const { openModal } = useConsentContext();
 
   useEffect(() => {
     const preferredLanguage = localStorage.getItem('language');
@@ -41,7 +39,11 @@ export default function Component(props) {
       const nextLang = translations.find(t => t.language.code.toLowerCase() === preferredLanguage);
 
 
-      if (nextLang) { router.push(nextLang.slug, undefined, { locale: preferredLanguage }) }
+      if (nextLang) {
+        const newPath = `/${preferredLanguage}/${nextLang.slug}`;
+        window.location.href = newPath;
+        // router.push(nextLang.slug, undefined, { locale: preferredLanguage }) 
+      }
       else { setShouldRenderContent(true); }
 
     } else {
@@ -133,9 +135,7 @@ export default function Component(props) {
           {showScanner && <QrScanner
             onDecode={(result) => {
               setShowScanner(false);
-              const newResult = result.replace('https://www.nordsternturm-tour.de/', '/');
-              console.log("🚀 ~ file: single.js:135 ~ Component ~ newResult:", newResult);
-              window.location.href = newResult
+              window.location.href = result
             }}
 
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}
