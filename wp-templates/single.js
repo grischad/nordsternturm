@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { QrScanner } from '@yudiel/react-qr-scanner';
 import QrToggle from '../components/QrToggle/QrToggle';
+import { useConsentContext } from '../lib/ConsentContext';
 import Image from 'next/image';
 
 export default function Component(props) {
@@ -27,6 +28,7 @@ export default function Component(props) {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = useState(router.locale);
   const isPreviewRoute = router.route.includes('preview');
+  const { consents, openModal } = useConsentContext();
 
 
   useEffect(() => {
@@ -57,10 +59,47 @@ export default function Component(props) {
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author, language, translations } = props.data.post;
+  console.log("🚀 ~ file: single.js:62 ~ Component ~ content:", content)
 
 
 
 
+  const cheerio = require('cheerio');
+
+  const modifyContent = (htmlString) => {
+    const platforms = ['youtube', 'vimeo', 'facebook', 'soundcloud', 'mixcloud'];
+    const $ = cheerio.load(htmlString);
+
+    $('iframe').each((index, iframe) => {
+      const src = $(iframe).attr('src');
+      const url = new URL(src);
+      const sourceId = platforms.find((platform) => url.hostname.includes(platform)) || 'other';
+
+      $(iframe).attr('data-name', sourceId);
+      $(iframe).attr('data-src', src);
+      $(iframe).removeAttr('src');
+
+      $('figure.wp-block-embed').addClass('embed-clickable');
+      $('div.wp-block-embed__wrapper').addClass('flex justify-center');
+
+    });
+
+    return $.html();
+  };
+  const modifiedContent = modifyContent(content);
+
+  useEffect(() => {
+    const figures = document.querySelectorAll('.embed-clickable');
+    figures.forEach(figure => {
+      figure.addEventListener('click', openModal);
+    });
+
+    return () => { // Cleanup-Funktion
+      figures.forEach(figure => {
+        figure.removeEventListener('click', openModal);
+      });
+    };
+  });
 
   if (!shouldRenderContent && !isPreviewRoute) {
     return null;
@@ -99,7 +138,7 @@ export default function Component(props) {
           />
           <Container>
 
-            <ContentWrapper content={content} />
+            <ContentWrapper content={modifiedContent} />
           </Container>
         </>
       </Main>
