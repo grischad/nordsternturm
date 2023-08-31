@@ -133,9 +133,9 @@ export default function Component(props) {
           {showScanner && <QrScanner
             onDecode={(result) => {
               setShowScanner(false);
-              // const newResult = result.replace('https://www.nordsternturm-tour.de', 'http://192.168.178.145:3000'); 
-              // console.log("🚀 ~ file: single.js:135 ~ Component ~ newResult:", newResult); 
-              window.location.href = result
+              const newResult = result.replace('https://www.nordsternturm-tour.de/', '/');
+              console.log("🚀 ~ file: single.js:135 ~ Component ~ newResult:", newResult);
+              window.location.href = newResult
             }}
 
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}
