@@ -9,7 +9,9 @@ function KlaroWrapper({ children }) {
     const [isKlaroLoaded, setKlaroLoaded] = useState(false);
 
     useEffect(() => {
+
         const loadKlaro = async () => {
+            console.log('geht hier rei loadKlaro')
             const Klaro = await import("klaro/dist/klaro-no-css")
             Klaro.setup(klaroConfig);
             setKlaroManager(Klaro.getManager());
@@ -21,6 +23,7 @@ function KlaroWrapper({ children }) {
 
     useEffect(() => {
         const setKlaroConsents = async () => {
+            console.log('geht hier rein setKlaroConsents')
             if (klaroManager) {
                 let videoConsents = {}
                 if (klaroManager?.getConsent('vimeo')) videoConsents = ({ ...videoConsents, vimeo: true });

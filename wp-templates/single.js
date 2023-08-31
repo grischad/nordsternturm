@@ -29,6 +29,7 @@ export default function Component(props) {
   const [currentLanguage, setCurrentLanguage] = useState(router.locale);
   const isPreviewRoute = router.route.includes('preview');
   const { consents, openModal } = useConsentContext();
+  console.log("🚀 ~ file: single.js:32 ~ Component ~ consents:", consents)
 
 
   useEffect(() => {
