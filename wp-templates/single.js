@@ -131,7 +131,7 @@ export default function Component(props) {
             <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
           </div>
           {showScanner && <QrScanner
-            onDecode={(result) => { setShowScanner(false); window.location.href = result }}
+            onDecode={(result) => { setShowScanner(false); window.open(result, '_blank') }}
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}
           />}
           <EntryHeader
