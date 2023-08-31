@@ -1,5 +1,5 @@
 const klaroConfig = {
-    privacyPolicy: '/datenschutz',
+    privacyPolicy: 'https://www.nordsternturm.de/impressum-datenschutz.php',
     acceptAll: true,
     mustConsent: true,
 

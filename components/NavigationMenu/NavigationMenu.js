@@ -4,11 +4,13 @@ import Link from 'next/link';
 import styles from './NavigationMenu.module.scss';
 import stylesFromWP from './NavigationMenuClassesFromWP.module.scss';
 import { flatListToHierarchical } from '@faustwp/core';
+import { useConsentContext } from '../../lib/ConsentContext';
 
 let cx = classNames.bind(styles);
 let cxFromWp = classNames.bind(stylesFromWP);
 
 export default function NavigationMenu({ menuItems, className }) {
+  const { openModal } = useConsentContext();
   if (!menuItems) {
     return null;
   }
@@ -18,7 +20,7 @@ export default function NavigationMenu({ menuItems, className }) {
 
   function renderMenu(items) {
     return (
-      <ul className={cx('menu')}>
+      <ul >
         {items.map((item) => {
           const { id, path, label, children, cssClasses } = item;
 
@@ -28,12 +30,16 @@ export default function NavigationMenu({ menuItems, className }) {
           }
 
           return (
-            <li key={id} className={cxFromWp(cssClasses)}>
+            <li key={id} className="text-sm mb-2" >
               <Link href={path ?? ''} legacyBehavior>{label ?? ''}</Link>
               {children.length ? renderMenu(children) : null}
             </li>
           );
         })}
+        <li key="cookies" className="text-sm mb-2" >
+          <a legacyBehavior onClick={() => openModal()}>Cookies</a>
+
+        </li>
       </ul>
     );
   }

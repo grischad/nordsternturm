@@ -27,10 +27,10 @@ to create a white background.
 
 
 .klaro {
-  --font-size: 18px;
+  --font-size: 16px;
   font-family: '__Josefin_Sans_02b14a', '__Josefin_Sans_Fallback_02b14a';
-  font-size: 18px;
-  font-size: var(--font-size, 18px);
+  line-height: .8 !important;
+  font-size: var(--font-size, 16px);
 }
 
 .cm-powered-by, .cm-buttons {display: none !important;}
@@ -572,7 +572,7 @@ to create a white background.
 
 .klaro .cookie-modal .cm-modal .cm-header h1 {
   margin: 0;
-  font-size: 2em;
+  font-size: 1.7em;
   display: block;
 }
 

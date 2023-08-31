@@ -60,7 +60,9 @@ export default function Component(props) {
   const { title: siteTitle, description: siteDescription } =
     props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
+  const footerMenuDe = props?.data?.footerMenuItems?.nodes ?? [];
+  const footerMenuEn = props?.data?.footerMenuItemsEn?.nodes ?? [];
+  const footerMenu = router.locale === 'de' ? footerMenuDe : footerMenuEn;
   const { title, content, featuredImage, date, author, language, translations } = props.data.post;
 
 
@@ -165,6 +167,7 @@ Component.query = gql`
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
+    $footerLocationEn: MenuLocationEnum
     $asPreview: Boolean = false
   ) {
     post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
@@ -198,6 +201,11 @@ Component.query = gql`
         ...NavigationMenuItemFragment
       }
     }
+    footerMenuItemsEn: menuItems(where: { location: $footerLocationEn }) {
+      nodes {
+        ...NavigationMenuItemFragment
+      }
+    }
   }
 `;
 
@@ -206,6 +214,7 @@ Component.variables = ({ databaseId }, ctx) => {
     databaseId,
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
+    footerLocationEn: MENUS.FOOTER_LOCATION_EN,
     asPreview: ctx?.asPreview,
   };
 };

@@ -13,6 +13,6 @@
 @import 'utilities';
 
 
-
+a:where(:not(.wp-element-button)) {color: inherit !important}
 
 // .context-notice {font-family: inherit;}
