@@ -60,7 +60,6 @@ export default function Component(props) {
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage, date, author, language, translations } = props.data.post;
-  console.log("🚀 ~ file: single.js:62 ~ Component ~ content:", content)
 
 
 
@@ -132,7 +131,7 @@ export default function Component(props) {
             <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
           </div>
           {showScanner && <QrScanner
-            onDecode={(result) => { setShowScanner(false); window.location.href = result }}
+            onDecode={(result) => { setShowScanner(false); router.push(result); }}
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}
           />}
           <EntryHeader
