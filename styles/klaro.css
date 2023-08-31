@@ -33,7 +33,7 @@ to create a white background.
   font-size: var(--font-size, 18px);
 }
 
-.cm-buttons {display: none !important;}
+.cm-powered-by, .cm-buttons {display: none !important;}
 
 .klaro button {
   font-family: inherit;

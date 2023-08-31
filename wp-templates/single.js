@@ -80,6 +80,7 @@ export default function Component(props) {
       $(iframe).removeAttr('src');
 
       $('figure.wp-block-embed').addClass('embed-clickable');
+      $('div.wp-block-embed__wrapper').addClass('flex justify-center');
 
     });
 
@@ -89,8 +90,6 @@ export default function Component(props) {
 
   useEffect(() => {
     const figures = document.querySelectorAll('.embed-clickable');
-    console.log("🚀 ~ file: single.js:91 ~ useEffect ~ document:", document)
-    console.log("🚀 ~ file: single.js:65 ~ useEffect ~ figures:", figures)
     figures.forEach(figure => {
       figure.addEventListener('click', openModal);
     });
