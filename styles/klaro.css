@@ -27,10 +27,13 @@ to create a white background.
 
 
 .klaro {
-  font-family: '__Jost_fe0236', '__Jost_Fallback_fe0236';
-  font-size: 14px;
-  font-size: var(--font-size, 14px);
+  --font-size: 18px;
+  font-family: '__Josefin_Sans_02b14a', '__Josefin_Sans_Fallback_02b14a';
+  font-size: 18px;
+  font-size: var(--font-size, 18px);
 }
+
+.cm-buttons {display: none !important;}
 
 .klaro button {
   font-family: inherit;

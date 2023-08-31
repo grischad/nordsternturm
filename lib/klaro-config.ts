@@ -51,6 +51,54 @@ const klaroConfig = {
                     description: 'Setzt folgende Cookies: fr (facebook.com / 3 Monate): Wird von Facebook verwendet, um personalisierte Werbung anzuzeigen, basierend auf früheren Besuchen und Interaktionen. / xs (facebook.com / 1 Jahr): Wird verwendet, um die Authentifizierung und Sicherheit von Benutzersitzungen aufrechtzuerhalten. / datr (facebook.com / 13 Monate): Hilft Facebook, böswillige Aktivitäten zu erkennen und die Sicherheit der Plattform zu gewährleisten. / dpr (facebook.com / 1 Woche): Speichert Informationen über die Bildschirmauflösung des Benutzers, um eine optimierte Darstellung von Facebook-Inhalten zu ermöglichen. / wd (facebook.com / 1 Woche): Speichert Informationen über die Browserfenstergröße des Benutzers, um das Layout der Facebook-Seite zu optimieren. / c_user (facebook.com / 1 Jahr): Speichert die Facebook-Benutzer-ID des angemeldeten Benutzers, um eine nahtlose Navigation und Interaktion auf der Plattform zu ermöglichen. / sb (facebook.com / 14 Monate): Wird verwendet, um die Browser- und Geräteinformationen des Benutzers zu speichern und böswillige Aktivitäten auf der Plattform zu verhindern.'
                 },
             },
+        },
+        {
+            purposes: ['media'],
+            name: "soundcloud",
+            // contextualConsentOnly: true // this option enables inline consent
+            translations: {
+                zz: {
+                    title: 'Soundcloud'
+                },
+                en: {
+                    description: 'Is used to save the user\'s cookie settings.'
+                },
+                de: {
+                    description: 'Setzt folgende Cookies: fr (facebook.com / 3 Monate): Wird von Facebook verwendet, um personalisierte Werbung anzuzeigen, basierend auf früheren Besuchen und Interaktionen. / xs (facebook.com / 1 Jahr): Wird verwendet, um die Authentifizierung und Sicherheit von Benutzersitzungen aufrechtzuerhalten. / datr (facebook.com / 13 Monate): Hilft Facebook, böswillige Aktivitäten zu erkennen und die Sicherheit der Plattform zu gewährleisten. / dpr (facebook.com / 1 Woche): Speichert Informationen über die Bildschirmauflösung des Benutzers, um eine optimierte Darstellung von Facebook-Inhalten zu ermöglichen. / wd (facebook.com / 1 Woche): Speichert Informationen über die Browserfenstergröße des Benutzers, um das Layout der Facebook-Seite zu optimieren. / c_user (facebook.com / 1 Jahr): Speichert die Facebook-Benutzer-ID des angemeldeten Benutzers, um eine nahtlose Navigation und Interaktion auf der Plattform zu ermöglichen. / sb (facebook.com / 14 Monate): Wird verwendet, um die Browser- und Geräteinformationen des Benutzers zu speichern und böswillige Aktivitäten auf der Plattform zu verhindern.'
+                },
+            },
+        },
+        {
+            purposes: ['media'],
+            name: "mixcloud",
+            // contextualConsentOnly: true // this option enables inline consent
+            translations: {
+                zz: {
+                    title: 'Mixcloud'
+                },
+                en: {
+                    description: 'Is used to save the user\'s cookie settings.'
+                },
+                de: {
+                    description: 'Setzt folgende Cookies: fr (facebook.com / 3 Monate): Wird von Facebook verwendet, um personalisierte Werbung anzuzeigen, basierend auf früheren Besuchen und Interaktionen. / xs (facebook.com / 1 Jahr): Wird verwendet, um die Authentifizierung und Sicherheit von Benutzersitzungen aufrechtzuerhalten. / datr (facebook.com / 13 Monate): Hilft Facebook, böswillige Aktivitäten zu erkennen und die Sicherheit der Plattform zu gewährleisten. / dpr (facebook.com / 1 Woche): Speichert Informationen über die Bildschirmauflösung des Benutzers, um eine optimierte Darstellung von Facebook-Inhalten zu ermöglichen. / wd (facebook.com / 1 Woche): Speichert Informationen über die Browserfenstergröße des Benutzers, um das Layout der Facebook-Seite zu optimieren. / c_user (facebook.com / 1 Jahr): Speichert die Facebook-Benutzer-ID des angemeldeten Benutzers, um eine nahtlose Navigation und Interaktion auf der Plattform zu ermöglichen. / sb (facebook.com / 14 Monate): Wird verwendet, um die Browser- und Geräteinformationen des Benutzers zu speichern und böswillige Aktivitäten auf der Plattform zu verhindern.'
+                },
+            },
+        },
+        {
+            purposes: ['media'],
+            name: "other",
+            // contextualConsentOnly: true // this option enables inline consent
+            translations: {
+                zz: {
+                    title: 'Andere'
+                },
+                en: {
+                    description: 'Is used to save the user\'s cookie settings.'
+                },
+                de: {
+                    description: 'Setzt folgende Cookies: fr (facebook.com / 3 Monate): Wird von Facebook verwendet, um personalisierte Werbung anzuzeigen, basierend auf früheren Besuchen und Interaktionen. / xs (facebook.com / 1 Jahr): Wird verwendet, um die Authentifizierung und Sicherheit von Benutzersitzungen aufrechtzuerhalten. / datr (facebook.com / 13 Monate): Hilft Facebook, böswillige Aktivitäten zu erkennen und die Sicherheit der Plattform zu gewährleisten. / dpr (facebook.com / 1 Woche): Speichert Informationen über die Bildschirmauflösung des Benutzers, um eine optimierte Darstellung von Facebook-Inhalten zu ermöglichen. / wd (facebook.com / 1 Woche): Speichert Informationen über die Browserfenstergröße des Benutzers, um das Layout der Facebook-Seite zu optimieren. / c_user (facebook.com / 1 Jahr): Speichert die Facebook-Benutzer-ID des angemeldeten Benutzers, um eine nahtlose Navigation und Interaktion auf der Plattform zu ermöglichen. / sb (facebook.com / 14 Monate): Wird verwendet, um die Browser- und Geräteinformationen des Benutzers zu speichern und böswillige Aktivitäten auf der Plattform zu verhindern.'
+                },
+            },
         }
     ],
     translations: {
@@ -59,8 +107,8 @@ const klaroConfig = {
                 description: 'Hallo! Könnten wir bitte einige zusätzliche Dienste zur Optimierung der Website-Funktionen aktivieren? Sie können Ihre Zustimmung später jederzeit ändern oder zurückziehen.',
             },
             'consentModal': {
-                'title': 'Ihre Cookie-Einstellungen für mietenlachenweinen.de',
-                'description': 'Wir setzen selber keine nicht-notwendigen Cookies, doch binden wir Videos ein, deren Seiten Cookies setzen. Klicken Sie auf „Alle akzeptieren“, um alle Cookies zu akzeptieren, wählen Sie einzelne Videoquellen aus und klicken Sie auf „Ausgewählte akzeptieren“ oder auf „Ich lehne ab“. Sie können die Cookies auch jederzeit nachträglich über den Link "Cookies" in der Fußzeile der Seite abwählen.',
+                'title': 'Ihre Cookie-Einstellungen für nordsternturm-tour.de',
+                'description': 'Wir setzen selber keine nicht-notwendigen Cookies, doch binden wir Videos und andere externe Inhalte ein, deren Seiten Cookies setzen. Klicken Sie auf „Alle akzeptieren“, um alle Cookies zu akzeptieren, wählen Sie einzelne Quellen aus und klicken Sie auf „Ausgewählte akzeptieren“ oder auf „Ich lehne ab“. Sie können die Cookies auch jederzeit nachträglich über den Link "Cookies" in der Fußzeile der Seite abwählen.',
             },
             'acceptSelected': 'Ausgewählte akzeptieren',
             'purposes': {
