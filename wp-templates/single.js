@@ -41,8 +41,8 @@ export default function Component(props) {
 
       if (nextLang) {
         const newPath = `/${preferredLanguage}/${nextLang.slug}`;
-        // window.location.href = newPath;
-        router.push(nextLang.slug, undefined, { locale: preferredLanguage })
+        window.location.href = newPath;
+        // router.push(nextLang.slug, undefined, { locale: preferredLanguage }) 
       }
       else { setShouldRenderContent(true); }
 
@@ -137,8 +137,7 @@ export default function Component(props) {
           {showScanner && <QrScanner
             onDecode={(result) => {
               setShowScanner(false);
-              // window.location.href = result
-              router.push(result);
+              window.location.href = result
             }}
 
             onError={(error) => { setShowScanner(false); console.log(error?.message) }}

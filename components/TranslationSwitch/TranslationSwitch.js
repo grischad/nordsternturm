@@ -16,8 +16,8 @@ export default function TranslationSwitch({ translations, currentLanguage, setCu
             setCurrentLanguage(nextLang.language.code.toLowerCase());
             localStorage.setItem('language', nextLang.language.code.toLowerCase());
             const newPath = `/${nextLang.language.code.toLowerCase()}/${nextLang.slug}`;
-            // window.location.href = newPath;
-            router.push(nextLang.slug, undefined, { locale: nextLang.language.code.toLowerCase() });
+            window.location.href = newPath;
+            // router.push(nextLang.slug, undefined, { locale: nextLang.language.code.toLowerCase() });
 
         }
     }
