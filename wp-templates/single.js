@@ -20,10 +20,13 @@ import QrToggle from '../components/QrToggle/QrToggle';
 import { useConsentContext } from '../lib/ConsentContext';
 import Image from 'next/image';
 
+import CameraPermission from '../components/CameraPermission/CameraPermission';
+
 export default function Component(props) {
 
   const [shouldRenderContent, setShouldRenderContent] = useState(false);
   const [showScanner, setShowScanner] = useState(false);
+  const [cameraStatus, setCameraStatus] = useState(false);
   // Loading state for previews
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = useState(router.locale);
@@ -54,7 +57,6 @@ export default function Component(props) {
   if (props.loading) {
     return <>Loading...</>;
   }
-
 
 
   const { title: siteTitle, description: siteDescription } =
@@ -129,24 +131,30 @@ export default function Component(props) {
 
       <Main>
         <>
+          <div className="sticky w-full bg-white z-20 top-2 shadow-sm ">
+            <div className="flex justify-between items-center">
+              <TranslationSwitch translations={translations} currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />
+              <div className="flex justify-between items-center gap-2">
+                <CameraPermission language={currentLanguage} />
+                <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
+              </div>
+            </div>
+            {showScanner && <QrScanner
+              onDecode={(result) => {
+                setShowScanner(false);
+                window.location.href = result
+              }}
 
-          <div className="flex justify-between">
-            <TranslationSwitch translations={translations} currentLanguage={currentLanguage} setCurrentLanguage={setCurrentLanguage} />
-            <QrToggle showScanner={showScanner} setShowScanner={setShowScanner} />
+              onError={(error) => { setShowScanner(false); console.log(error?.message) }}
+            />}
           </div>
-          {showScanner && <QrScanner
-            onDecode={(result) => {
-              setShowScanner(false);
-              window.location.href = result
-            }}
 
-            onError={(error) => { setShowScanner(false); console.log(error?.message) }}
-          />}
           <EntryHeader
             title={title}
             image={featuredImage?.node}
             date={date}
             author={author?.node?.name}
+
           />
           <Container>
 

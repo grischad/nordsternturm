@@ -20,7 +20,7 @@ export default function EntryHeader({ title, image, date, author, className }) {
       {hasText && (
         <div className={cx('text', { 'has-image': image })}>
           <Container>
-            {!!title && <Heading className={cx('title')}>{title}</Heading>}
+            {!!title && <Heading className={cx('title') + " mt-3"}>{title}</Heading>}
             {/* <PostInfo
               className={cx('byline')}
               author={author}

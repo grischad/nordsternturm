@@ -49,7 +49,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <FaustProvider pageProps={pageProps}>
       <main className={josefinSans.className + " min-h-screen"}>
-        <div className="sticky w-full top-0 h-2 bg-right z-20">
+        <div className="sticky w-full top-0 h-2 bg-right z-30">
           <Image
             src="/header_top_color.png"
             alt="Header Top Color"
