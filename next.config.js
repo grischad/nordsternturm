@@ -1,6 +1,7 @@
 const { withFaust, getWpHostname } = require('@faustwp/core');
 
-/**
+/*
+ *
  * @type {import('next').NextConfig}
  **/
 module.exports = withFaust({
@@ -15,5 +16,18 @@ module.exports = withFaust({
     locales: ['default', 'de', 'en'],
     defaultLocale: 'default',
     localeDetection: false,
+  },
+  async headers() {
+    return [
+      {
+        source: '/404',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, must-revalidate',
+          },
+        ],
+      },
+    ];
   },
 });
