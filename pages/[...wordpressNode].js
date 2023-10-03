@@ -5,7 +5,6 @@ export default function Page(props) {
 }
 
 export function getStaticProps(ctx) {
-  ctx.res.setHeader('Cache-Control', 'no-store, max-age=0');
   return getWordPressProps({ ctx, revalidate: 10 });
 }
 
