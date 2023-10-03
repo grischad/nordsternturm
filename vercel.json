@@ -1,11 +1,11 @@
 {
     "headers": [
         {
-            "source": "/404",
+            "source": "/(.*)",
             "headers": [
                 {
                     "key": "Cache-Control",
-                    "value": "no-store, must-revalidate"
+                    "value": "no-store, max-age=0"
                 }
             ]
         }

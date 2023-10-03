@@ -20,11 +20,11 @@ module.exports = withFaust({
   async headers() {
     return [
       {
-        source: '/404',
+        source: '/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'no-store, must-revalidate',
+            value: 'no-store, max-age=0',
           },
         ],
       },
