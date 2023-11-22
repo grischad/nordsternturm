@@ -40,8 +40,17 @@
 			}
 		}
 
-		li {
-			font-size: 1.6rem;
+		// li {
+		// 	font-size: 1.6rem;
+		// }
+
+		ul {
+			list-style: initial; //disc
+			margin-block-start: 1em;
+			margin-block-end: 1em;
+			margin-inline-start: 0px;
+			margin-inline-end: 0px;
+			padding-inline-start: 40px;
 		}
 
 		img {
