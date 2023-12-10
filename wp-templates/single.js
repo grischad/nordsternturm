@@ -73,6 +73,7 @@ export default function Component(props) {
   const cheerio = require('cheerio');
 
   const modifyContent = (htmlString) => {
+    console.log("🚀 ~ file: single.js:76 ~ modifyContent ~ htmlString:", htmlString)
     if (typeof htmlString !== 'string') {
       console.error('htmlString is not a string:', htmlString);
       return '';
@@ -93,6 +94,17 @@ export default function Component(props) {
       $('div.wp-block-embed__wrapper').addClass('flex justify-center');
 
     });
+
+    // Suche nach Elementen, die ein URL-Muster haben
+    const urlPattern = /(http[s]?:\/\/[^\s]+)|(www\.[^\s]+)/g;
+    $('*').contents().each((index, node) => {
+      if (node.type === 'text') {
+        const text = node.data;
+        const newText = text.replace(urlPattern, '<span class="hyphens-none break-words">$1</span>');
+        $(node).replaceWith(newText);
+      }
+    });
+
 
     return $.html();
   };

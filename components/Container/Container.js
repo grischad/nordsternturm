@@ -5,7 +5,7 @@ let cx = className.bind(styles);
 
 export default function Container({ children, className }) {
   return (
-    <div className={cx(['component', className])}>
+    <div className={cx(['component', className]) + ' overflow-scroll'}>
       {children}
     </div>
   );
