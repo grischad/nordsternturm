@@ -100,7 +100,7 @@ export default function Component(props) {
     $('*').contents().each((index, node) => {
       if (node.type === 'text') {
         const text = node.data;
-        const newText = text.replace(urlPattern, '<span class="hyphens-none break-words">$1</span>');
+        const newText = text.replace(urlPattern, '<span class="hyphens-none break-words">$&</span>');
         $(node).replaceWith(newText);
       }
     });
